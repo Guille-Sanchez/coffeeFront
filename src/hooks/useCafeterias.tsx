@@ -4,18 +4,23 @@ import {Cafeterias} from '../interfaces.mts'
 interface CafeteriasHook {
   cafeterias?: Cafeterias
   loading: boolean
+  places?: string[]
 }
 
 const useCafeterias = (): CafeteriasHook => {
   const [cafeterias, setCafeterias] = useState<Cafeterias>()
   const [loading, setLoading] = useState(true)
+  const [places, setPlaces] = useState<string[]>([])
 
   useEffect(() => {
     const fetchCafeterias = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/v1/cafeterias/')
+        const response = await fetch(
+          `${import.meta.env.VITE_BE_URL}cafeterias/`
+        )
         const data: Cafeterias = await response.json()
         setCafeterias(data)
+        setPlaces(() => Object.keys(data))
       } catch (error) {
         console.error('Error fetching cafeterias:', error)
       } finally {
@@ -26,7 +31,7 @@ const useCafeterias = (): CafeteriasHook => {
     fetchCafeterias()
   }, [])
 
-  return {cafeterias, loading}
+  return {cafeterias, loading, places}
 }
 
 export default useCafeterias
