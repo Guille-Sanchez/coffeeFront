@@ -3,8 +3,8 @@ import {useJourneyEntry} from '../hooks/useJourneyEntry'
 
 export const DetailedCafeteriaPage = () => {
   let place = window.location.href.split('/').at(-1)
-  if (place?.includes('%20')) {
-    place = place.replaceAll('%20', ' ')
+  if (place) {
+    place = place = decodeURIComponent(place)
   }
   const {foodJournalEntry, loading} = useJourneyEntry({place})
 
