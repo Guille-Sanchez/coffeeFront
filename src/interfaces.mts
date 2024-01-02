@@ -10,3 +10,13 @@ export interface Cafeteria {
 export interface Cafeterias {
   [name: string]: Cafeteria
 }
+
+export type FoodJournalEntries = FoodJournalEntry[]
+
+export interface FoodJournalEntry {
+  id: number
+  images: string[]
+  date: string
+  price?: number
+  description: string
+}

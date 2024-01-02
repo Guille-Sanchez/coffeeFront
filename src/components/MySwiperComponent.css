@@ -1,0 +1,20 @@
+.my-swiper-container .swiper-button-next,
+.my-swiper-container .swiper-button-prev {
+  color: #ffffff !important; /* Change the color */
+}
+
+.my-swiper-container .swiper-button-next {
+  background-image: url('path_to_your_custom_next_arrow_image.svg') !important;
+}
+
+.my-swiper-container .swiper-button-prev {
+  background-image: url('path_to_your_custom_prev_arrow_image.svg') !important;
+}
+
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after,
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+  font-size: 20px;
+  color: #ffffff !important; /* Change the color */
+}
